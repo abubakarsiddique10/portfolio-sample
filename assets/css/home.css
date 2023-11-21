@@ -405,7 +405,7 @@ footer,section:not(#hero) {
    width: 100%;
    height: 100%;
 }
-.portfolio__menu .menu__item--active {
+.portfolio__menu .active {
     color: var(--color-yellow-500, #FFB400);
 }
 /* portfolio style end */
@@ -673,6 +673,7 @@ footer,section:not(#hero) {
     }
     .portfolio__menu .menu__item {
         user-select: none;
+        cursor: grab;
     }
     .portfolio__wrappper img {
         display: block;
@@ -687,8 +688,6 @@ footer,section:not(#hero) {
         flex-direction: column;
     }
     .contact__right, .contact__left {
-        /* padding-left: 0;
-        padding-right: 0; */
         border: none;
     }
 

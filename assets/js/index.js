@@ -172,8 +172,11 @@ portfolioMenu.addEventListener('click', (e) => {
         const menuId = e.target.id;
         portfolioItem.forEach((item) => {
             if (menuId != item.id && menuId != "all-categories") {
+
                 item.style.display = "none"
             } else {
+                document.querySelector('.portfolio__menu .active').classList.remove('active');
+                e.target.classList.add('active')
                 item.style.display = "block";
             }
         })
