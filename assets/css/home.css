@@ -149,7 +149,6 @@ footer,section:not(#hero) {
 .hero__right {
 	/* max-width: 450px;
     max-height: 480px; */
-   
    max-width: 420px;
    max-height: 450px;
 }
@@ -370,6 +369,10 @@ footer,section:not(#hero) {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 4px;
+    background: rgb(248 250 252);
+    border: 1px solid rgba(71, 85, 105, .1);
+    margin-bottom: 64px;
 }
  .portfolio__wrappper img {
     width: 25px;
@@ -383,6 +386,7 @@ footer,section:not(#hero) {
 .portfolio__menu {
     display: flex;
     gap: 20px;
+    padding:15px 20px;
 }
 
 .portfolio__menu .menu__item {
@@ -568,7 +572,6 @@ footer,section:not(#hero) {
 
 
 /* footer style start */
-
 .footer__header {
     text-align: center;
     margin-bottom: 25px;
@@ -611,7 +614,6 @@ footer,section:not(#hero) {
     }
     .nav__menu {
         width: 100%;
-        /* height: 300px; */
         position: absolute;
         top: 64px;
         left: 0;
@@ -668,6 +670,26 @@ footer,section:not(#hero) {
         max-width: 550px;
         overflow-x: scroll;
     }
+    .portfolio__wrappper::before {
+        left: 0;
+        position: absolute;
+        content: "";
+        width: 25px;
+        height: 52px;
+        border-radius: 4px;
+        display: inline-block;
+        background: linear-gradient(90deg, var(--colorBefore), 70%, transparent);
+    }
+    .portfolio__wrappper::after {
+        right: 0;
+        position: absolute;
+        content: "";
+        width: 25px;
+        height: 52px;
+        border-radius: 4px;
+        display: inline-block;
+        background: linear-gradient(-90deg, var(--colorAfter), 70%, transparent);
+    }
     .portfolio__menu::-webkit-scrollbar {
         display: none;
     }
@@ -690,7 +712,6 @@ footer,section:not(#hero) {
     .contact__right, .contact__left {
         border: none;
     }
-
     .hero__title {
         font-size: 32px;
         line-height:40px;
@@ -714,7 +735,6 @@ footer,section:not(#hero) {
     }
 }
 /* media query end */
-
 
 .nav__show {
     display: block;

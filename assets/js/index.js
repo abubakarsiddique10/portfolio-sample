@@ -22,7 +22,8 @@ const contactLeft = document.querySelector('.contact__left');
 const contactRight = document.querySelector('.contact__right');
 const svg = document.querySelectorAll('svg');
 const messageInput = document.querySelectorAll('.contact__form input, textarea')
-
+const servicesCardSVG = document.querySelectorAll('.services__card svg');
+const portfolioWrappper = document.querySelector('.portfolio__wrappper')
 
 
 // nav background change function
@@ -81,12 +82,13 @@ if (isTheme == 'dark') {
     navLogo.style.color = "#A6ADBA";
     navLink.forEach((item) => item.style.color = "#A6ADBA");
     svg.forEach((item) => item.style.fill = " #A6ADBA");
+    servicesCardSVG.forEach((svg) => svg.style.fill = "#F0F0F6")
     messageInput.forEach((input) => {
         input.style.background = "#1D232A";
         input.style.color = "#FFFFFF";
     });
 
-    [...servicesCard, ...testimonialCard, ...priceCard, ...blogCard, contactLeft, contactRight].forEach((card) => {
+    [...servicesCard, ...testimonialCard, ...priceCard, ...blogCard, contactLeft, contactRight, portfolioWrappper].forEach((card) => {
         card.style.border = "1px solid rgba(166, 173, 186, 0.05)"
         card.style.background = "#242B33";
     });
@@ -110,16 +112,17 @@ themeToggle.addEventListener('click', () => {
 
         navLink.forEach((item) => item.style.color = "#A6ADBA");
         svg.forEach((item) => item.style.fill = " #A6ADBA");
+        servicesCardSVG.forEach((svg) => svg.style.fill = "#F0F0F6")
         messageInput.forEach((input) => {
             input.style.background = "#1D232A";
             input.style.color = "#FFFFFF";
         });
 
-        [...servicesCard, ...testimonialCard, ...priceCard, ...blogCard, contactLeft, contactRight].forEach((card) => {
+        [...servicesCard, ...testimonialCard, ...priceCard, ...blogCard, contactLeft, contactRight, portfolioWrappper].forEach((card) => {
             card.style.border = "1px solid rgba(166, 173, 186, 0.05)"
             card.style.background = "#242B33";
         })
-
+        slideShow()
         resizeScreen()
 
     } else {
@@ -134,19 +137,20 @@ themeToggle.addEventListener('click', () => {
         navLogo.style.color = "#18191A";
         navLink.forEach((item) => item.style.color = "#18191A");
         svg.forEach((item) => item.style.fill = "#18191A");
+        servicesCardSVG.forEach((svg) => svg.style.fill = "#FFB400")
         messageInput.forEach((input) => {
             input.style.background = "#FFFFFF";
             input.style.color = "black";
         });
 
-        [...servicesCard, ...testimonialCard, ...priceCard, ...blogCard, contactLeft, contactRight].forEach((card) => {
+        [...servicesCard, ...testimonialCard, ...priceCard, ...blogCard, contactLeft, contactRight, portfolioWrappper].forEach((card) => {
             card.style.background = "rgb(248 250 252)";
             card.style.border = "1px solid rgba(71, 85, 105, .1)";
             card.style.borderRadius = "4px"
         });
         contactLeft.style.background = "#FFFFFF";
         contactRight.style.background = "#FFFFFF";
-
+        slideShow()
         resizeScreen()
     }
 })
@@ -165,6 +169,17 @@ portfolioMenu.addEventListener('mousemove', (e) => {
     if (!isdragging) return
     portfolioMenu.scrollLeft = portfolioMenu.scrollLeft - e.movementX
 })
+// this code for slide shadow
+const slideShow = () => {
+    const isTheme = localStorage.getItem('theme');
+    const scrollLeft = portfolioMenu.scrollLeft;
+    const maxScrollableWidth = portfolioMenu.scrollWidth - portfolioMenu.clientWidth;
+
+    portfolioWrappper.style.setProperty("--colorBefore", scrollLeft > 0 ? `${isTheme == "dark" ? "#242B33" : "#fefefe"}` : "");
+    portfolioWrappper.style.setProperty("--colorAfter", maxScrollableWidth == scrollLeft ? "" : `${isTheme == "dark" ? "#242B33" : "#fefefe"}`)
+}
+slideShow()
+portfolioMenu.addEventListener('scroll', slideShow)
 
 // this code for clicking
 portfolioMenu.addEventListener('click', (e) => {
