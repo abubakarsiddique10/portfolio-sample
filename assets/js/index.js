@@ -20,10 +20,11 @@ const priceCard = document.querySelectorAll('.price__card');
 const blogCard = document.querySelectorAll('.blog__card');
 const contactLeft = document.querySelector('.contact__left');
 const contactRight = document.querySelector('.contact__right');
-const svg = document.querySelectorAll('svg');
 const messageInput = document.querySelectorAll('.contact__form input, textarea')
 const servicesCardSVG = document.querySelectorAll('.services__card svg');
 const portfolioWrappper = document.querySelector('.portfolio__wrappper')
+const testimonialCardSVG = document.querySelectorAll('.testimonial__card svg');
+const svg = document.querySelectorAll('svg:not(.card__rating svg)');
 
 
 // nav background change function
@@ -83,6 +84,7 @@ if (isTheme == 'dark') {
     navLink.forEach((item) => item.style.color = "#A6ADBA");
     svg.forEach((item) => item.style.fill = " #A6ADBA");
     servicesCardSVG.forEach((svg) => svg.style.fill = "#F0F0F6")
+
     messageInput.forEach((input) => {
         input.style.background = "#1D232A";
         input.style.color = "#FFFFFF";
@@ -94,7 +96,7 @@ if (isTheme == 'dark') {
     });
     resizeScreen()
 }
-
+console.log(testimonialCardSVG)
 themeToggle.addEventListener('click', () => {
     const active = html.classList.toggle('dark');
 
@@ -104,12 +106,9 @@ themeToggle.addEventListener('click', () => {
         sun.style.display = "block";
         html.classList.remove('light');
         hero.style.background = "#1D232A";
-
         header.style.background = '#1D232A';
         header.style.borderBottom = "1px solid rgba(166, 173, 186, 0.08)";
         navLogo.style.color = "#A6ADBA";
-
-
         navLink.forEach((item) => item.style.color = "#A6ADBA");
         svg.forEach((item) => item.style.fill = " #A6ADBA");
         servicesCardSVG.forEach((svg) => svg.style.fill = "#F0F0F6")
